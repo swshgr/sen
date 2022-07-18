@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="big">
+        <div id="tu">
+            <img src="./img/1.png" alt="">
+            <img src="./img/2.png" alt="">
+        </div>
+        <div id="wb">
+            ~ today I need do ~
+        </div>
+        <div id="tou">
+            <input type="text" id="input" placeholder="add new todo...">
+            <button id="btn">submit</button>
+        </div>
+        <ul id="todos">
+        </ul>
+        >
+    </div>
+</body>
+</html>
+
+<script>
+    var input = document.querySelector('#input')
+    var btn = document.querySelector('#btn')
+    var todos = document.querySelector('#todos')
+    var count = document.querySelector('#count')
+    var qing = document.querySelector('#qing')
+    var del = document.querySelectorAll('.del')
+    var counts = 0
+    input.onkeydown = function(e) {
+        if(e.keyCode === 13) {
+            if(input.value == '') {
+                alert('输入框不能为空')
+                return false
+            }else {
+                var li = document.createElement('li')
+                li.innerHTML = `
+                <input type="checkbox"  class="fx"/>
+                <span>${input.value}</span>
+                <span class="del">X</span>
+                `
+                todos.appendChild(li)
+                input.value = ''
+              
+                var fx=document.querySelectorAll(".fx")
+                for (let i = 0; i < fx.length; i++) {
+                        fx[i].setAttribute('fx',1)
+                        console.log(1);
+                        fx[i].addEventListener('change',function () {
+                            if(this.getAttribute('fx')==1){
+                                this.getAttribute('fx',1)
+                                this.parentNode.style.textDecoration="line-through";
+                                this.parentNode.parentNode.style.backgroundColor='orange'
+                            }else{
+                                console.log(this);
+                                this.getAttribute('fx',2)
+                                this.parentNode.style.textDecoration="";
+                                this.parentNode.parentNode.style.backgroundColor=''
+                            }
+                        })
+                        
+                    }
+            }
+        }
+    }
+    btn.onclick = function() {
+        if(input.value == '') {
+            alert('输入框不能为空')
+            return false
+        }else {
+            var li = document.createElement('li')
+            li.innerHTML = `
+            <input type="checkbox" class="fx"/>
+            <span>${input.value}</span>
+            <span class="del">X</span>
+            `
+            todos.appendChild(li)
+            input.value = ''
+            var fx=document.querySelectorAll(".fx")
+                for (let i = 0; i < fx.length; i++) {
+                        fx[i].setAttribute('aa',1)
+                        console.log(1);
+                        fx[i].addEventListener('change',function () {
+                            if(this.getAttribute('aa')==1){
+                                this.getAttribute('aa',1)
+                                this.parentNode.style.textDecoration="line-through";
+                                this.parentNode.parentNode.style.backgroundColor='orange'
+                            }else{
+                                this.getAttribute('aa',2)
+                                this.parentNode.style.textDecoration="";
+                                this.parentNode.parentNode.style.backgroundColor=''
+                            }
+                        })
+                        
+                    }
+                    var fx=document.querySelectorAll(".fx")
+                for (let i = 0; i < fx.length; i++) {
+                        fx[i].setAttribute('fx',1)
+                        console.log(1);
+                        fx[i].addEventListener('change',function () {
+                            if(this.getAttribute('fx')==1){
+                                this.getAttribute('fx',1)
+                                this.parentNode.style.textDecoration="line-through";
+                                this.parentNode.parentNode.style.backgroundColor='orange'
+                            }else{
+                                console.log(this);
+                                this.getAttribute('fx',2)
+                                this.parentNode.style.textDecoration="";
+                                this.parentNode.parentNode.style.backgroundColor=''
+                            }
+                        })
+                        
+                    }
+        }
+    }
+    todos.addEventListener('click',function(e) {
+        if(e.target.className == 'del') {
+            e.target.parentNode.parentNode.removeChild(e.target.parentNode)
+        }
+    })
+   
+</script>
+
+<style>
+    body {
+        background: rgb(170, 134, 134);
+    }
+    #big {
+        margin: auto;
+        margin-top: 150px;
+        width: 400px;
+        border-radius: 10px;
+        background: white;
+    }
+    #tu {
+        width: 100%;
+        box-sizing: border-box;
+        padding-top: 20px;
+        padding-left: 50px;
+    }
+    #wb {
+        font-size: 25px;
+        font-weight: 700;
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+    }
+    #tou {
+        width: 100%;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+    }
+    input {
+        border: none;
+        outline: none;
+        border-bottom: 5px dashed orange;
+    }
+    #btn {
+        height: 30px;
+        border: 2px solid black;
+        margin-left: 20px;
+        background: white;
+        border-radius: 5px;
+    }
+   
+    .del {
+        float: right;
+        margin-right: 30px;
+        color: red;
+        cursor: pointer;
+    }
+</style>
